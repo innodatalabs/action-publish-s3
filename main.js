@@ -71,7 +71,8 @@ async function main(directory, namePattern, targetPattern, acl, awsAccessKeyId, 
         accessKeyId: awsAccessKeyId,
         secretAccessKey: awsSecretAccessKey,
     });
-    const stored = await s3.upload({
+
+    await s3.upload({
         Bucket: bucket,
         Key   : key,
         Body  : zipBody,

@@ -11,6 +11,6 @@ const { main } = require('./main.js');
 
     const [bucket, key] = await main(directory, namePattern, targetPattern, acl, awsAccessKeyId, awsSecretAccessKey);
 
-    core.setOutput('location-s3', target);
+    core.setOutput('location-s3', `s3://${bucket}/${key}`);
     core.setOutput('location-http', `https://s3.amazonaws.com/${bucket}/${key}`);
 })().catch(error => core.setFailed(error.message));

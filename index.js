@@ -5,7 +5,7 @@ function sleep(howlong) {
     return new Promise( resolve => setTimeout(resolve, howlong));
 }
 
-(async function() {
+(async () => {
     const directory          = core.getInput('directory');
     const namePattern        = core.getInput('name-pattern');
     const targetPattern      = core.getInput('target-pattern');

@@ -1,9 +1,6 @@
 const core = require('@actions/core');
 const { main } = require('./main.js');
 
-function sleep(howlong) {
-    return new Promise( resolve => setTimeout(resolve, howlong));
-}
 
 (async () => {
     const directory          = core.getInput('directory');
@@ -17,9 +14,4 @@ function sleep(howlong) {
 
     core.setOutput('location-s3', `s3://${bucket}/${key}`);
     core.setOutput('location-http', `https://s3.amazonaws.com/${bucket}/${key}`);
-
-    core.info(`Sleeping... ${new Date()}`);
-
-    await sleep(20000);
-    core.info(`Done... ${new Date()}`);
 })().catch(error => core.setFailed(error.message));

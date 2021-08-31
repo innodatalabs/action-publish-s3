@@ -25,10 +25,11 @@ inputs:
     required: true
 
 outputs:
-  location_s3:
+  location-s3:
     description: 'URL of the uploaded file as s3://'
-  location_http:
+  location-http:
     description: 'URL of the uploaded file as https://'
+
 runs:
   using: 'node12'
   main: 'lib/index.js'

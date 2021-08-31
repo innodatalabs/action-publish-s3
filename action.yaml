@@ -4,7 +4,10 @@ inputs:
   directory:
     description: 'Which directory to ZIP'
     required: true
-  target:
+  name-pattern:
+    description: 'Zip directory name'
+    required: true
+  target-pattern:
     description: 'Target s3:// url'
     required: true
   acl:

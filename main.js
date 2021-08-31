@@ -17,7 +17,7 @@ function resolve(context, variable) {
     for (let x of variable.split('.')) {
         value = value[x];
         if (value === undefined) {
-            throw new Error(`Could not find valiable ${valiable}`);
+            throw new Error(`Could not find variable ${variable}`);
         }
     }
 

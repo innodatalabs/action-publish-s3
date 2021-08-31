@@ -18,9 +18,11 @@ async function run() {
 
         core.setOutput('location-s3', `s3://${bucket}/${key}`);
         core.setOutput('location-http', `https://s3.amazonaws.com/${bucket}/${key}`);
-        core.info('Sleeping...');
+
+        core.info(`Sleeping... ${new Date()}`);
 
         await sleep(20000);
+        core.info(`Done... ${new Date()}`);
     } catch(error) {
         core.setFailed(error.message);
     }

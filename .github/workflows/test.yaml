@@ -11,7 +11,7 @@ jobs:
       - uses: ./
         with:
           name-pattern: 'action-publish-s3-test-{{TODAY_YMD}-linux'
-          target-pattern: 's3://temp.innodatalabs.com/{{name}}.zip'
+          target-pattern: 's3://temp.innodatalabs.com/{{NAME}}.zip'
           acl: 'public-read'
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}

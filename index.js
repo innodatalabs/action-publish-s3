@@ -5,7 +5,7 @@ function sleep(howlong) {
     return new Promise( resolve => setTimeout(resolve, howlong));
 }
 
-async function run() {
+(async function() {
     try {
         const directory          = core.getInput('directory');
         const namePattern        = core.getInput('name-pattern');
@@ -26,6 +26,4 @@ async function run() {
     } catch(error) {
         core.setFailed(error.message);
     }
-}
-
-run().catch(console.log);
+})().catch(console.log);

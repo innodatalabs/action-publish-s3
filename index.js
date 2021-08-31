@@ -22,4 +22,4 @@ function sleep(howlong) {
 
     await sleep(20000);
     core.info(`Done... ${new Date()}`);
-})().catch(core.setFailed(error.message));
+})().catch(error => core.setFailed(error.message));

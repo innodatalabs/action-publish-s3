@@ -1,0 +1,24 @@
+name: quick test
+on: push
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out Git repository
+        uses: actions/checkout@v2
+
+      - uses: ./
+        with:
+          name-pattern: 'action-publish-s3-test-{{TODAY_YMD}-linux'
+          target-pattern: 's3://temp.innodatalabs.com/{{name}}.zip'
+          acl: 'public-read'
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        id: it
+
+      - name: Echo
+        run: |
+          echo ${{ steps.it.outputs.location-s3 }}
+          echo ${{ steps.it.outputs.location-http }}
+

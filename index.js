@@ -1,16 +1,28 @@
 const core = require('@actions/core');
 const { main } = require('./main.js');
 
-(async () => {
-    const directory          = core.getInput('directory');
-    const namePattern        = core.getInput('name-pattern');
-    const targetPattern      = core.getInput('target-pattern');
-    const acl                = core.getInput('acl');
-    const awsAccessKeyId     = core.getInput('aws-access-key-id');
-    const awsSecretAccessKey = core.getInput('aws-secret-access-key');
+function sleep(howlong) {
+    return new Promise( resolve => setTimeout(resolve, howlong));
+}
 
-    const [bucket, key] = await main(directory, namePattern, targetPattern, acl, awsAccessKeyId, awsSecretAccessKey);
+async function run() {
+    try {
+        const directory          = core.getInput('directory');
+        const namePattern        = core.getInput('name-pattern');
+        const targetPattern      = core.getInput('target-pattern');
+        const acl                = core.getInput('acl');
+        const awsAccessKeyId     = core.getInput('aws-access-key-id');
+        const awsSecretAccessKey = core.getInput('aws-secret-access-key');
 
-    core.setOutput('location-s3', `s3://${bucket}/${key}`);
-    core.setOutput('location-http', `https://s3.amazonaws.com/${bucket}/${key}`);
-})().catch(error => core.setFailed(error.message));
+        const [bucket, key] = await main(directory, namePattern, targetPattern, acl, awsAccessKeyId, awsSecretAccessKey);
+
+        core.setOutput('location-s3', `s3://${bucket}/${key}`);
+        core.setOutput('location-http', `https://s3.amazonaws.com/${bucket}/${key}`);
+
+        await sleep(20000);
+    } catch(error) {
+        core.setFailed(error.message);
+    }
+}
+
+run();

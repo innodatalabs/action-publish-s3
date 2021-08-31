@@ -59,7 +59,6 @@ async function main(directory, namePattern, targetPattern, acl, awsAccessKeyId, 
     if (!target.startsWith('s3://')) {
         throw new Error('Target must start with "s3://"');
     }
-    console.log(name, target)
 
     const zipper = new AdmZip();
     zipper.addLocalFolder(directory, name);

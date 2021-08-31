@@ -1,0 +1,31 @@
+name: 'Package and Upload'
+description: 'Package files in a ZIP and uploads to the AWS S3'
+inputs:
+  directory:
+    description: 'Which directory to ZIP'
+    required: true
+  target:
+    description: 'Target s3:// url'
+    required: true
+  acl:
+    description: 'ACL to use for the uploaded file. Default is "private"'
+    required: false
+    default: 'private'
+  aws-access-key-id:
+    description: AWS_ACCESS_KEY_ID
+    required: true
+  aws-secret-access-key:
+    description: AWS_SECRET_ACCESS_KEY
+    required: true
+  aws-region:
+    description: AWS_REGION
+    required: true
+
+outputs:
+  location_s3:
+    description: 'URL of the uploaded file as s3://'
+  location_http:
+    description: 'URL of the uploaded file as https://'
+runs:
+  using: 'node12'
+  main: 'lib/index.js'

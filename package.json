@@ -1,0 +1,12 @@
+{
+  "name": "action-publish-s3",
+  "version": "1.0.0",
+  "description": "Zip a directory and uploads to S3",
+  "main": "lib/index.js",
+  "dependencies": {
+    "@actions/core": "^1.5.0",
+    "adm-zip": "^0.5.5",
+    "aws-cli": "^0.0.2",
+    "aws-sdk": "^2.979.0"
+  }
+}

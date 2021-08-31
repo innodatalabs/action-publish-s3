@@ -13,7 +13,6 @@ function getYMD() {
 
 function resolve(context, variable) {
     let value = context;
-    console.log(variable.split('.'))
     for (let x of variable.split('.')) {
         value = value[x];
         if (value === undefined) {

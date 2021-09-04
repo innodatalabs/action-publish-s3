@@ -5,7 +5,7 @@ GitHub action to zip a directory and upload to S3
 Example:
 ```yaml
 steps:
-  using: innodatalabs/action-publish-s3@1.0.0
+  using: innodatalabs/action-publish-s3@2.0.2
   with:
     directory: /tmp
     name-pattern: candy-shop-{{TODAY_YMD}}

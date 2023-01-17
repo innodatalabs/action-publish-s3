@@ -22,7 +22,7 @@ inputs:
     required: true
   aws-region:
     description: AWS_REGION
-    required: true
+    required: false
 
 outputs:
   location-s3:

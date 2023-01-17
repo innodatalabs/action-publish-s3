@@ -74,8 +74,10 @@ async function main({
     const [ bucket, key ] = parseS3(target);
 
     const s3 = new S3({
-        accessKeyId: awsAccessKeyId,
-        secretAccessKey: awsSecretAccessKey,
+        credentials: {
+            accessKeyId: awsAccessKeyId,
+            secretAccessKey: awsSecretAccessKey,
+        },
         region: awsRegion,
     });
 

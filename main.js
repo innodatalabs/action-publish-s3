@@ -86,7 +86,7 @@ async function main({
         Key   : key,
         Body  : zipBody,
         ACL   : acl,
-    }).promise();
+    });
 
     return { bucket, key };
 }

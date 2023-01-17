@@ -9,8 +9,17 @@ const { main } = require('./main.js');
     const acl                = core.getInput('acl');
     const awsAccessKeyId     = core.getInput('aws-access-key-id');
     const awsSecretAccessKey = core.getInput('aws-secret-access-key');
+    const awsRegion          = core.getInput('aws-region');
 
-    const [bucket, key] = await main(directory, namePattern, targetPattern, acl, awsAccessKeyId, awsSecretAccessKey);
+    const { bucket, key } = await main({
+        directory,
+        namePattern,
+        targetPattern,
+        acl,
+        awsAccessKeyId,
+        awsSecretAccessKey,
+        awsRegion
+    });
 
     core.setOutput('location-s3', `s3://${bucket}/${key}`);
     core.setOutput('location-http', `https://s3.amazonaws.com/${bucket}/${key}`);

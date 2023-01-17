@@ -50,7 +50,15 @@ function parseS3(s3url) {
     return [m[1], m[2]];
 }
 
-async function main(directory, namePattern, targetPattern, acl, awsAccessKeyId, awsSecretAccessKey) {
+async function main({
+    directory,
+    namePattern,
+    targetPattern,
+    acl,
+    awsAccessKeyId,
+    awsSecretAccessKey,
+    awsRegion,
+}) {
     const TODAY_YMD = getYMD();
 
     const name   = extrapolate(namePattern, {...process.env, TODAY_YMD})
@@ -77,7 +85,7 @@ async function main(directory, namePattern, targetPattern, acl, awsAccessKeyId, 
         ACL   : acl,
     }).promise();
 
-    return [bucket, key];
+    return { bucket, key };
 }
 
 module.exports.main = main;

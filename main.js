@@ -1,5 +1,5 @@
 const AdmZip = require('adm-zip');
-const AWS = require('aws-sdk');
+const { S3 } = require('@aws-sdk/client-s3');
 const fs = require('fs').promises;
 
 function padded(number) {
@@ -65,7 +65,7 @@ async function main(directory, namePattern, targetPattern, acl, awsAccessKeyId, 
 
     const [ bucket, key ] = parseS3(target);
 
-    const s3 = new AWS.S3({
+    const s3 = new S3({
         accessKeyId: awsAccessKeyId,
         secretAccessKey: awsSecretAccessKey,
     });
@@ -75,7 +75,7 @@ async function main(directory, namePattern, targetPattern, acl, awsAccessKeyId, 
         Key   : key,
         Body  : zipBody,
         ACL   : acl,
-    }).promise();
+    });
 
     return [bucket, key];
 }

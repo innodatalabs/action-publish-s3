@@ -1,6 +1,6 @@
 {
   "name": "action-publish-s3",
-  "version": "2.0.5",
+  "version": "2.0.6",
   "description": "Zip a directory and uploads to S3",
   "main": "lib/index.js",
   "dependencies": {

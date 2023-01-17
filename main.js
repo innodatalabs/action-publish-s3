@@ -76,6 +76,7 @@ async function main({
     const s3 = new S3({
         accessKeyId: awsAccessKeyId,
         secretAccessKey: awsSecretAccessKey,
+        region: awsRegion,
     });
 
     await s3.putObject({

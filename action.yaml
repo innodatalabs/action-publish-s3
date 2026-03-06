@@ -23,6 +23,7 @@ inputs:
   aws-region:
     description: AWS_REGION
     required: false
+    default: 'us-east-1'
 
 outputs:
   location-s3:

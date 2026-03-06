@@ -1,8 +1,7 @@
-const core = require('@actions/core');
-const { main } = require('./main.js');
+import * as core from '@actions/core';
+import { main } from './main.js';
 
-
-(async () => {
+try {
     const directory          = core.getInput('directory');
     const namePattern        = core.getInput('name-pattern');
     const targetPattern      = core.getInput('target-pattern');
@@ -23,4 +22,6 @@ const { main } = require('./main.js');
 
     core.setOutput('location-s3', `s3://${bucket}/${key}`);
     core.setOutput('location-http', `https://s3.amazonaws.com/${bucket}/${key}`);
-})().catch(error => core.setFailed(error.message));
+} catch (error) {
+    core.setFailed(error.message);
+}

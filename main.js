@@ -1,6 +1,5 @@
-const AdmZip = require('adm-zip');
-const { S3 } = require('@aws-sdk/client-s3');
-const fs = require('fs').promises;
+import AdmZip from 'adm-zip';
+import { S3 } from '@aws-sdk/client-s3';
 
 function padded(number) {
     return ('0' + number).slice(-2)
@@ -50,7 +49,7 @@ function parseS3(s3url) {
     return [m[1], m[2]];
 }
 
-async function main({
+export async function main({
     directory,
     namePattern,
     targetPattern,
@@ -90,5 +89,3 @@ async function main({
 
     return { bucket, key };
 }
-
-module.exports.main = main;
